@@ -142,7 +142,7 @@ function App() {
             <div style={{ 
                 display: 'flex', 
                 alignItems: 'flex-start',
-                width: 'calc(100% - 100px)', // Reserve space for timestamp
+                width: 'calc(100% - 100px)',
                 minWidth: 0
             }}>
                 <img 
