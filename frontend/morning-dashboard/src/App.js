@@ -67,15 +67,50 @@ function App() {
     };
 
     const renderFeedItem = (item, favicon, i) => (
-        <li key={i}>
-            <img 
-                src={favicon || "https://upload.wikimedia.org/wikipedia/en/d/d0/Dogecoin_Logo.png"} 
-                alt="favicon" 
-                style={{ width: 16, height: 16, marginRight: 5 }} 
-            />
-            <a href={item.link} target="_blank" rel="noopener noreferrer">
-                {item.title}
-            </a> - <span style={{ color: "gray" }}>{item.relativeTime}</span>
+        <li key={i} style={{ 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'flex-start',
+            gap: '12px',
+            padding: '4px 0'
+        }}>
+            <div style={{ 
+                display: 'flex', 
+                alignItems: 'flex-start',
+                width: 'calc(100% - 100px)', // Reserve space for timestamp
+                minWidth: 0
+            }}>
+                <img 
+                    src={favicon || "https://upload.wikimedia.org/wikipedia/en/d/d0/Dogecoin_Logo.png"} 
+                    alt="favicon" 
+                    style={{ 
+                        width: 16, 
+                        height: 16, 
+                        marginRight: 5, 
+                        flexShrink: 0,
+                        marginTop: '4px'
+                    }} 
+                />
+                <a href={item.link} 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   style={{
+                       display: 'block',
+                       wordBreak: 'break-word',
+                       lineHeight: '1.4'
+                   }}>
+                    {item.title}
+                </a>
+            </div>
+            <span style={{ 
+                color: "#888", 
+                fontSize: "0.9em",
+                flexShrink: 0,
+                width: '90px',
+                textAlign: 'right'
+            }}>
+                {item.timeago}
+            </span>
         </li>
     );
 
