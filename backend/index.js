@@ -3,7 +3,6 @@ const cors = require("cors");
 const Parser = require("rss-parser");
 const axios = require("axios");
 const cheerio = require("cheerio");
-const timeago = require("timeago.js");
 
 const app = express();
 const PORT = 5000;
@@ -98,9 +97,7 @@ app.post("/fetch-feeds", async (req, res) => {
                         items: feed.items.slice(0, feedConfig.articles).map(item => ({
                             title: item.title || "No title",
                             link: item.link || "#",
-                            pubDate: item.pubDate || "Unknown date",
-                            timestamp: item.isoDate || item.pubDate || new Date().toISOString(),
-                            timeago: item.isoDate || item.pubDate ? timeago.format(new Date(item.isoDate || item.pubDate)) : "Unknown time"
+                            pubDate: item.pubDate || "Unknown date"
                         }))
                     };
                 } catch (error) {
